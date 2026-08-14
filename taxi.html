@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Service | Internationals Pro</title>
+    <link rel="icon" href="/assets/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/site.webmanifest">
+    <meta name="theme-color" content="#0B2D60">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #003580;
+            --hover-color: #ff0000;
+        }
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', Arial, sans-serif; 
+            background-color: #f4f7f9;
+        }
+        .header {
+            padding: 40px 40px 10px 40px;
+            display: flex;
+            align-items: center;
+            background: transparent;
+        }
+        .logo img {
+            width: 280px; 
+            height: auto;
+            display: block;
+        }
+        .wrapper { 
+            width: 100%; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px 50px 20px; 
+            box-sizing: border-box;
+        }
+        .action-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: -10px;
+        }
+        .back-link {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-size: 75px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            line-height: 0.8;
+            cursor: pointer;
+        }
+        .back-link:hover {
+            color: var(--hover-color);
+        }
+        .widget-container {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" onclick="window.close();setTimeout(function(){window.location.href='index.html';},300);return false;">
+                <img src="assets/logo.png" alt="Internationals" class="site-logo">
+            </a>
+        </div>
+    </header>
+    <div class="wrapper">
+        <div class="action-bar">
+            <a onclick="window.close();" class="back-link" title="Закрыть и вернуться">←</a>
+        </div>
+        <div class="widget-container">
+            <script async src="https://tpemb.com/content?trs=527087&shmarker=726649.taxi&powered_by=true&locale=en&curr=EUR&color=blue&pbi=0&ag=18&ap=34&rid=481&campaign_id=22&promo_id=3507" charset="utf-8"></script>
+        </div>
+    </div>
+</body>
+</html>

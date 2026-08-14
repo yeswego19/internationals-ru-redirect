@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Перевод документов</title>
+<style>
+body{font-family:system-ui;background:#0a0e1a;color:#e8eef7;margin:0;padding:2rem;max-width:700px;margin-inline:auto}
+h1{color:#67b8ff}
+.upload{border:2px dashed #4a90e2;padding:2rem;text-align:center;border-radius:12px;cursor:pointer;margin:1rem 0}
+button{background:#4a90e2;color:#fff;border:0;padding:.8rem 1.5rem;border-radius:8px;cursor:pointer;font-size:1rem}
+#result{background:#111827;padding:1rem;border-radius:8px;white-space:pre-wrap;min-height:120px;margin-top:1rem}
+select{padding:.5rem;margin:.5rem 0}
+</style>
+</head>
+<body>
+<h1>Перевод документов</h1>
+
+<div class="upload" onclick="fileInput.click()">
+  <input type="file" id="fileInput" accept="image/*" hidden>
+  Выберите фото документа
+</div>
+
+<label>Перевести на:
+  <select id="lang">
+    <option value="Russian">Русский</option>
+    <option value="English">English</option>
+    <option value="Chinese">中文</option>
+  </select>
+</label>
+
+<button onclick="process()">Распознать и перевести</button>
+<div id="status"></div>
+<div id="result"></div>
+
+<script>
+const API = 'https://express-js-on-vercel-one-psi-71.vercel.app/api/ocr'; // ← замени на свой адрес если другой
+
+async function process() {
+  const file = document.getElementById('fileInput').files[0];
+  const lang = document.getElementById('lang').value;
+  if (!file) return alert('Выберите файл');
+
+  const status = document.getElementById('status');
+  const result = document.getElementById('result');
+  status.textContent = 'Читаю файл...';
+
+  const reader = new FileReader();
+  reader.onload = async () => {
+    status.textContent = 'Отправляю в Qwen...';
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image: reader.result,
+          lang: lang
+        })
+      });
+      const data = await res.json();
+      if (data.error) {
+        status.textContent = 'Ошибка: ' + data.error;
+        return;
+      }
+      result.textContent = data.text;
+      status.textContent = 'Готово';
+    } catch (e) {
+      status.textContent = 'Ошибка: ' + e.message;
+    }
+  };
+  reader.readAsDataURL(file);
+}
+</script>
+</body>
+</html>
