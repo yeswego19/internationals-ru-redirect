@@ -462,7 +462,10 @@
             var ext=audioBlob.type.includes('ogg')?'ogg':'webm';
             formData.append('audio', audioBlob, 'voice-'+Date.now()+'.'+ext);
           }
-          var res = await fetch(FEEDBACK_API + '/submit.php', { method: 'POST', body: formData });
+          var res = await Promise.race([
+            fetch(FEEDBACK_API + '/submit.php', { method: 'POST', body: formData }),
+            new Promise(function(_, reject){ setTimeout(function(){ reject(new Error('timeout - server took too long')); }, 10000); })
+          ]);
           var result = await res.json();
           if(!res.ok || result.error) throw new Error(result.error || 'HTTP ' + res.status);
           feedbackForm.reset(); audioBlob=null; audioPreview.style.display='none';
