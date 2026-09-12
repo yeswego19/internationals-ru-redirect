@@ -2,29 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://internationals.pro/</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://internationalspro.ru/</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://internationals.pro/feedback.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://internationalspro.ru/index-ru.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://internationalspro.ru/feedback.html</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://internationals.pro/partners.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://internationalspro.ru/partners.html</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://internationals.pro/pricing.html</loc>
-    <lastmod>2026-04-28</lastmod>
+    <loc>https://internationalspro.ru/pricing.html</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

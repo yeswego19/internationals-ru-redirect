@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://internationals.pro/sitemap.xml
+Sitemap: https://internationalspro.ru/sitemap.xml
 
 # Disallow temporary files
 Disallow: /temp/
