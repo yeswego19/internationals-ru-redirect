@@ -1,10 +1,7 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+Host: internationalspro.ru
+
 Sitemap: https://internationalspro.ru/sitemap.xml
 
-# Disallow temporary files
-Disallow: /temp/
-Disallow: /cache/
-Disallow: /admin/
