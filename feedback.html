@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" translate="yes">
 <head>
-  <link rel="canonical" href="https://internationals.click/feedback.html">
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="verify-admitad" content="3631d02de8" />
@@ -15,8 +13,7 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <meta name="theme-color" content="#0B2D60">
   <link rel="preload" as="image" href="feedback-bg.jpg" fetchpriority="high">
-  <link rel="preconnect" href="https://mcgcijdnzduzyqbbjtkm.supabase.co">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://m999124v.beget.tech">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
@@ -38,8 +35,8 @@
     }
     .feedback-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
     .feedback-header h2{ margin:0; color:#fff; font-size:22px; line-height:1; }
-    .close-btn{ background:transparent; border:0; color:#ff0000; font-weight:700; font-size:1.05rem; cursor:pointer; line-height:1; padding:0 4px; transition:color .2s; text-decoration:none; }
-    .close-btn:hover{ color:#ff6666; }
+    .close-btn{ background:transparent; border:0; color:#fff; font-size:46px; cursor:pointer; line-height:1; padding:0 4px; transition:color .2s,transform .2s; }
+    .close-btn:hover{ color:#ff4444; transform:translateX(-4px); }
     .feedback-form{ margin-top:8px; }
     .feedback-form input,.feedback-form textarea{
       width:100%; padding:12px; margin:8px 0; border-radius:8px;
@@ -184,10 +181,10 @@
   <div class="fixed-banner-right" id="bannerRight">
     <!-- Google Review CTA stays immediate, it's cheap and important -->
     <div class="banner-card" style="text-align:center; padding:16px;">
-      <svg width="24" height="24" viewBox="0 0 48 48" style="display:block;margin:0 auto 6px;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.09 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-3.59-13.46-8.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/><path fill="none" d="M0 0h48v48H0z"/></svg>
+      <svg width="24" height="24" viewBox="0 0 48 48" style="display:block;margin:0 auto 6px;flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="10" fill="#FC3F1D"/><text x="24" y="32" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#fff">Я</text></svg>
       <div style="font-size:22px; margin-bottom:6px; letter-spacing:2px;">⭐⭐⭐⭐⭐</div>
-      <div style="color:#fff; font-size:13px; font-weight:600; margin-bottom:4px;">Rate us on Google</div>
-      <a href="https://g.page/r/CQwStbpHlV3gEAI/review" target="_blank" rel="nofollow"
+      <div style="color:#fff; font-size:13px; font-weight:600; margin-bottom:4px;">Оцените нас на Яндексе</div>
+      <a href="https://yandex.ru/maps/-/CTh8QDy~" target="_blank" rel="nofollow"
          style="display:inline-block; margin-top:8px; padding:8px 18px;
                 background:linear-gradient(135deg,#1f3f83,#2f5597);
                 color:#fff; border-radius:20px; font-size:12px; font-weight:600; text-decoration:none;">
@@ -199,7 +196,7 @@
   <main class="feedback-container">
     <div class="feedback-header">
       <h2 class="translate" data-key="feedback">Feedback</h2>
-      <a href="index.html" class="close-btn" onclick="window.close();setTimeout(function(){window.location.href='index.html';},300);return false;">&larr; Internationals</a>
+      <button class="close-btn" onclick="if(history.length>1){history.back();}else{window.close();}">&#8592;</button>
     </div>
     <div id="errorMessage"></div>
     <div class="feedback-form">
@@ -249,8 +246,10 @@
       ar:{ feedback:"الملاحظات", name:"اسمك", message:"انطباعاتك، نصائحك، جهات الاتصال (اختياري)", record:"🎙 تسجيل الصوت", stop:"⏹ إيقاف التسجيل", delete:"🗑 حذف وإعادة التسجيل", send:"إرسال الملاحظات", recent:"أحدث التعليقات", loading:"جاري تحميل التعليقات...", sending:"جاري الإرسال...", sent:"✅ تم الإرسال!", replyLabel:"ردنا:" }
     };
     function getPreferredLang() {
-      return localStorage.getItem('language') || localStorage.getItem('userLang') ||
-             (navigator.language || navigator.userLanguage || 'en').split('-')[0] || 'en';
+      var stored = localStorage.getItem('language') || localStorage.getItem('userLang');
+      if (stored) return stored;
+      var browserLang = (navigator.language || navigator.userLanguage || 'ru').split('-')[0];
+      return (browserLang === 'en') ? 'en' : 'ru';
     }
     function applyTranslations() {
       var lang = getPreferredLang(), t = translations[lang] || translations.en;
@@ -266,37 +265,14 @@
     window.addEventListener('load', function(){ document.body.classList.add('loaded'); });
   </script>
 
-  <!-- ===== Supabase: НОВЫЙ PUBLISHABLE KEY ===== -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer onload="window.__sbReady && window.__sbReady()"></script>
+  <!-- ===== Beget backend (заменяет Supabase) ===== -->
   <script>
-    var SUPABASE_URL = 'https://mcgcijdnzduzyqbbjtkm.supabase.co';
-    var SUPABASE_KEY = 'sb_publishable_CCc78qZY25XBUDqdYsX9_w_YyKTihee';
-    var sb = null;
-    var __sbInitDone = false;
+    // Пока форма живёт на GitHub Pages, а бэкенд — на техническом поддомене Beget.
+    // После переключения DNS на Beget этот адрес нужно будет заменить на просто '' (тот же домен).
+    // Теперь internationalspro.ru и бэкенд — на одном сервере Beget, поэтому просто пустая строка (тот же домен)
+    var FEEDBACK_API = '';
 
-    window.__sbReady = function(){
-      if (__sbInitDone) return;
-      if (window.supabase && window.supabase.createClient) {
-        __sbInitDone = true;
-        sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-        initApp();
-      }
-    };
-    document.addEventListener('DOMContentLoaded', function(){
-      if (window.supabase) window.__sbReady();
-    });
-    window.addEventListener('load', function(){
-      if (window.supabase) window.__sbReady();
-    });
-    (function pollSupabase(triesLeft){
-      if (__sbInitDone) return;
-      if (window.supabase) { window.__sbReady(); return; }
-      if (triesLeft <= 0) {
-        showLoadError();
-        return;
-      }
-      setTimeout(function(){ pollSupabase(triesLeft - 1); }, 200);
-    })(75);
+    document.addEventListener('DOMContentLoaded', function(){ initApp(); });
 
     function showLoadError(){
       var el = document.getElementById('feedbackList');
@@ -405,7 +381,7 @@
               // Показываем плашку Google сверху
               var notice = document.createElement('div');
               notice.style.cssText = 'background:rgba(255,255,255,0.15);padding:12px;border-radius:8px;margin-bottom:12px;text-align:center;color:#fff;font-size:14px;';
-              notice.innerHTML = '⭐ <strong>Leave a review on Google</strong><br><a href="https://g.page/r/CQwStbpHlV3gEAI/review" target="_blank" rel="nofollow" style="color:#fff;font-weight:600;">Rate us →</a>';
+              notice.innerHTML = '⭐ <strong>Оставьте отзыв на Яндексе</strong><br><a href="https://yandex.ru/maps/-/CTh8QDy~" target="_blank" rel="nofollow" style="color:#fff;font-weight:600;">Оценить →</a>';
               el.insertBefore(notice, el.firstChild);
             } else {
               showGoogleOnly(el);
@@ -417,9 +393,9 @@
       function showGoogleOnly(el) {
         el.innerHTML = '<div style="text-align:center;padding:20px;">'
           + '<p style="color:#fff;margin-bottom:12px;">Reviews are temporarily unavailable.</p>'
-          + '<a href="https://g.page/r/CQwStbpHlV3gEAI/review" target="_blank" rel="nofollow" '
+          + '<a href="https://yandex.ru/maps/-/CTh8QDy~" target="_blank" rel="nofollow" '
           + 'style="display:inline-block;padding:12px 24px;background:linear-gradient(135deg,#2f5597,#1f3f83);'
-          + 'color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">⭐ Leave a review on Google</a>'
+          + 'color:#fff;border-radius:8px;text-decoration:none;font-weight:600;">⭐ Оставить отзыв на Яндексе</a>'
           + '</div>';
       }
 
@@ -453,14 +429,16 @@
       async function loadFeedback(){
         try{
           var res = await Promise.race([
-            sb.from('feedback').select('*').order('created_at',{ascending:false}).limit(50),
+            fetch(FEEDBACK_API + '/get.php'),
             new Promise(function(_, reject){ setTimeout(function(){ reject(new Error('timeout')); }, 4000); })
           ]);
-          if(res.error) throw res.error;
-          renderFeedback(res.data);
-          try{ localStorage.setItem(CACHE_KEY, JSON.stringify(res.data)); }catch(e){}
+          if(!res.ok) throw new Error('HTTP ' + res.status);
+          var data = await res.json();
+          if(data.error) throw new Error(data.error);
+          renderFeedback(data);
+          try{ localStorage.setItem(CACHE_KEY, JSON.stringify(data)); }catch(e){}
         }catch(err){
-          console.warn('Supabase unavailable:', err.message);
+          console.warn('Backend unavailable:', err.message);
           var cached = null;
           try { cached = localStorage.getItem(CACHE_KEY); } catch(e){}
           if(cached) {
@@ -480,17 +458,19 @@
         var lang=getPreferredLang();
         submitBtn.textContent=(translations[lang]||translations.en).sending||'Sending...';
         try{
-          var audioUrl=null;
+          var formData = new FormData();
+          formData.append('contact', name);
+          formData.append('message', message);
           if(audioBlob){
             var ext=audioBlob.type.includes('ogg')?'ogg':'webm';
-            var fileName='voice-'+Date.now()+'.'+ext;
-            var up=await sb.storage.from('voice-feedback').upload(fileName,audioBlob,{contentType:audioBlob.type,upsert:false});
-            if(up.error) throw up.error;
-            var pub=sb.storage.from('voice-feedback').getPublicUrl(fileName);
-            audioUrl=pub.data?.publicUrl||null;
+            formData.append('audio', audioBlob, 'voice-'+Date.now()+'.'+ext);
           }
-          var ins=await sb.from('feedback').insert([{contact:name,message:message,audio_url:audioUrl}]);
-          if(ins.error) throw ins.error;
+          var res = await Promise.race([
+            fetch(FEEDBACK_API + '/submit.php', { method: 'POST', body: formData }),
+            new Promise(function(_, reject){ setTimeout(function(){ reject(new Error('timeout - server took too long')); }, 10000); })
+          ]);
+          var result = await res.json();
+          if(!res.ok || result.error) throw new Error(result.error || 'HTTP ' + res.status);
           feedbackForm.reset(); audioBlob=null; audioPreview.style.display='none';
           previewPlayer.src=''; visualizerContainer.style.display='none';
           recordStatus.textContent=''; recordBtn.disabled=false; stopBtn.disabled=true;
@@ -514,18 +494,11 @@
     (function(){
       var bannersHTML_left = ''
         + '<div class="banner-card"><a target="_blank" rel="nofollow" href="https://salty.co.in/?utm_source=admitad&utm_medium=7_2522654_&utm_campaign=saltyaffiliate&click_id=16978671b122c79f3d24458a57235f65"><img width="300" height="250" src="salty.png" alt="Salty" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
-        + '<div class="banner-card"><a target="_blank" href="https://iz5.xyz/69febc97b1f51"><img width="300" height="250" src="https://indoleads.nyc3.digitaloceanspaces.com/uploads/offers/banners/5d91926ebb862.png" alt="Go City / CPS" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
-        + '<div class="banner-card"><a target="_blank" href="https://trackerpro.org/69febee6234c3"><img width="300" height="250" src="https://indoleads.nyc3.digitaloceanspaces.com/uploads/offers/banners/7b881d309a4fe.jpeg" alt="Coursera" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
-        + '<div class="banner-card"><a target="_blank" href="https://gettracker.net/69fec05932a2e"><img width="300" height="250" src="https://indoleads.nyc3.digitaloceanspaces.com/uploads/offers/banners/20ffacca76ca9.png" alt="Fiverr" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
         + '<div class="banner-card"><a target="_blank" rel="nofollow" href="https://grfpr.com/g/zehsdnxunvf1d04a03ac245c490fd8/"><img width="300" height="250" src="boost_banner.png" alt="Boost Presence" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
         + '<div class="banner-card"><a target="_blank" rel="noopener" href="https://museos.arteyeducacion.org/en/resurgence-of-the-homeland"><img width="300" height="250" src="resurgence_banner.png" alt="Resurgence of the Homeland" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
         + '<div class="banner-card tp-embed-slot" style="padding:8px;" id="tpEmbedLeftSlot"><div class="banner-label">Ad</div></div>';
 
       var bannersHTML_right_extra = ''
-        + '<div class="banner-card"><a target="_blank" rel="nofollow" href="https://traffmonetizer.com/?aff=2123948"><img width="300" height="250" src="traffmonetizer-300x250.png" alt="TraffMonetizer" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
-        + '<div class="banner-card"><a target="_blank" href="https://iz5.xyz/69fec16db1783"><img width="300" height="250" src="https://indoleads.nyc3.digitaloceanspaces.com/uploads/offers/banners/a87b8e27a71d7.jpeg" alt="OKX" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
-        + '<div class="banner-card"><a target="_blank" href="https://iz5.xyz/69fec16db1783"><img width="300" height="250" src="https://indoleads.nyc3.digitaloceanspaces.com/uploads/offers/banners/9d3ad20c15260.jpeg" alt="OKX" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
-        + '<div class="banner-card"><a target="_blank" href="https://i1b.xyz/69fee1c2b1360"><img width="300" height="250" src="https://indoleads.nyc3.digitaloceanspaces.com/uploads/offers/banners/5c91f90fbf94a.jpeg" alt="TicketNetwork" loading="lazy" decoding="async"/></a><div class="banner-label">Ad</div></div>'
         + '<div class="banner-card" style="padding:0;overflow:hidden;"><a class="cvc-banner" id="cvcBannerRight" target="_blank" rel="nofollow" href="https://rkdro.com/g/xo8ehfl68mf1d04a03acafa41ba253/"><div class="cvc-slides"><img class="cvc-slide cvc-active" src="cvc_slide1.png" alt="CVC Corp" loading="lazy"/><img class="cvc-slide" src="cvc_slide2.png" alt="CVC Corp" loading="lazy"/><img class="cvc-slide" src="cvc_slide3.png" alt="CVC Corp" loading="lazy"/><img class="cvc-slide" src="cvc_slide4.png" alt="CVC Corp" loading="lazy"/><img class="cvc-slide" src="cvc_slide5.png" alt="CVC Corp" loading="lazy"/></div><div class="cvc-dots" id="cvcDotsRight"><div class="cvc-dot cvc-dot-active"></div><div class="cvc-dot"></div><div class="cvc-dot"></div><div class="cvc-dot"></div><div class="cvc-dot"></div></div><div class="cvc-text-overlay"><div class="cvc-title">CVC Corp</div><div class="cvc-sub">Viagens e Turismo &bull; Descubra o mundo</div><div class="cvc-cta">Reservar agora →</div></div></a><div class="banner-label">Ad</div></div>'
         + '<div class="banner-card tp-embed-slot" style="padding:8px;" id="tpEmbedRightSlot"><div class="banner-label">Ad</div></div>';
 
@@ -622,26 +595,6 @@
       if(document.readyState === 'complete'){ scheduleAds(); }
       else{ window.addEventListener('load', scheduleAds); }
     })();
-  </script>
-
-  <!-- Background tracking pixel — deferred, не блокирует контент -->
-  <script>
-    window.addEventListener('load', function(){
-      var s = document.createElement('script');
-      s.src = 'https://www.anrdoezrs.net/am/101740082/include/joined/impressions/page/am.js';
-      s.async = true;
-      document.body.appendChild(s);
-    });
-    var NETWORK = "https://app.indoleads.com";
-    var API_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwcC5pbmRvbGVhZHMuY29tL2FwaS9nZXRfYXBpX3Rva2VuIiwiaWF0IjoxNzc3Nzk0MDg0LCJleHAiOjIwOTMxNTQwODQsIm5iZiI6MTc3Nzc5NDA4NCwianRpIjoiV2llUlFHQzlBaGt3d2ZOdCIsInN1YiI6IjY5ZWY1YTU0ZjMwODgxYjU4YTc1NGVhZiIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.uiUBOn-FML0E50u5l77IEf7hA0KCwFYFgSyC8JKS0tU";
-  </script>
-  <script>
-    window.addEventListener('load', function(){
-      var s = document.createElement('script');
-      s.src = '//static.indoleads.com/js/platform/url_transformer.min.js';
-      s.async = true;
-      document.body.appendChild(s);
-    });
   </script>
 </body>
 </html>
