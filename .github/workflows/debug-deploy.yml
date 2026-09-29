@@ -3,12 +3,16 @@ name: Debug Yandex Deploy
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   debug:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Try sync and capture output
+        continue-on-error: true
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
@@ -16,6 +20,7 @@ jobs:
           AWS_REQUEST_CHECKSUM_CALCULATION: when_required
           AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
         run: |
+          set +e
           echo "== aws --version ==" > debug_log.txt
           aws --version >> debug_log.txt 2>&1
           echo "== ls bucket ==" >> debug_log.txt
