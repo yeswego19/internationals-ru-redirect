@@ -1,0 +1,9 @@
+== aws --version ==
+aws-cli/2.36.49 Python/3.14.6 Linux/6.17.0-1022-azure exe/x86_64.ubuntu.24
+== ls bucket ==
+
+aws: [ERROR]: An error occurred (NoSuchBucket) when calling the ListObjectsV2 operation: The specified bucket does not exist.
+exit_ls=254
+== sync (dry) ==
+fatal error: An error occurred (NoSuchBucket) when calling the ListObjectsV2 operation: The specified bucket does not exist.
+exit_sync=1
