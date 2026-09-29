@@ -30,7 +30,7 @@ jobs:
           AWS_REQUEST_CHECKSUM_CALCULATION: when_required
           AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
         run: |
-          aws s3 sync . s3://internationals.site \
+          aws s3 sync . s3://internationals-site \
             --endpoint-url https://storage.yandexcloud.net \
             --delete \
             --exclude ".git/*" \
