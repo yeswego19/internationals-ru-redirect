@@ -1,0 +1,30 @@
+name: Debug Yandex Deploy
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check DNS and HTTPS
+        continue-on-error: true
+        run: |
+          set +e
+          echo "== dig CNAME www ==" > debug_log.txt
+          dig +short CNAME www.internationals.site >> debug_log.txt 2>&1
+          echo "== dig CNAME acme-challenge ==" >> debug_log.txt
+          dig +short CNAME _acme-challenge.www.internationals.site >> debug_log.txt 2>&1
+          echo "== http headers (plain) ==" >> debug_log.txt
+          curl -sI --max-time 10 http://www.internationals.site/ >> debug_log.txt 2>&1
+          echo "== https cert info ==" >> debug_log.txt
+          echo | openssl s_client -connect www.internationals.site:443 -servername www.internationals.site 2>&1 | openssl x509 -noout -subject -issuer -dates 2>&1 >> debug_log.txt
+          echo "== https curl ==" >> debug_log.txt
+          curl -sI --max-time 10 https://www.internationals.site/ >> debug_log.txt 2>&1
+          cat debug_log.txt
+      - name: Commit debug log
+        if: always()
+        run: |
+          git config user.name "debug-bot"; git config user.email "debug@example.com"
+          git add debug_log.txt; git commit -m "debug log" || echo none; git push
