@@ -1,0 +1,8 @@
+== set redirect on internationals-site ==
+exit_set=0
+{
+    "RedirectAllRequestsTo": {
+        "HostName": "www.internationals.site",
+        "Protocol": "https"
+    }
+}
