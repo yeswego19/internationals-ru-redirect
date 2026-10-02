@@ -1,0 +1,25 @@
+name: Debug Yandex Deploy
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: List bucket
+        continue-on-error: true
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ru-central1
+        run: |
+          set +e
+          aws s3 ls s3://www.internationals.site --endpoint-url https://storage.yandexcloud.net --recursive --summarize > debug_log.txt 2>&1
+          cat debug_log.txt
+      - name: Commit debug log
+        if: always()
+        run: |
+          git config user.name "debug-bot"; git config user.email "debug@example.com"
+          git add debug_log.txt; git commit -m "debug log" || echo none; git push
