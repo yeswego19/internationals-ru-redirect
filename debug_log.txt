@@ -1,0 +1,22 @@
+== dig CNAME www ==
+www.internationals.site.website.yandexcloud.net.
+== dig CNAME acme-challenge ==
+== http headers (plain) ==
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 02 Oct 2026 03:09:47 GMT
+Content-Type: text/html
+Content-Length: 31929
+Connection: keep-alive
+Keep-Alive: timeout=60
+Accept-Ranges: bytes
+Etag: "aee49a80ef4bf46fe79a776d6b688dc4"
+Last-Modified: Fri, 02 Oct 2026 02:58:13 GMT
+X-Amz-Request-Id: 6d8406892c5352dd
+
+== https cert info ==
+subject=C = RU, ST = Moscow, L = Moscow, O = YANDEX LLC, CN = *.storage-1.yandexcloud.net
+issuer=C = BE, O = GlobalSign nv-sa, CN = GlobalSign RSA OV SSL CA 2018
+notBefore=May 18 21:36:16 2026 GMT
+notAfter=Nov 16 20:59:59 2026 GMT
+== https curl ==
