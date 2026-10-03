@@ -1,7 +1,6 @@
 User-agent: *
 Allow: /
 
-Host: internationalspro.ru
+Host: www.internationals.site
 
-Sitemap: https://internationalspro.ru/sitemap.xml
-
+Sitemap: https://www.internationals.site/sitemap.xml
