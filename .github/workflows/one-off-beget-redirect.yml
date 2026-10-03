@@ -1,4 +1,4 @@
-name: One-off Beget redirect upload
+name: One-off Beget redirect upload v2
 on:
   workflow_dispatch:
 jobs:
