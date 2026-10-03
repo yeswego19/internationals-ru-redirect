@@ -1,5 +1,9 @@
 name: Begetredirectupload
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/beget-redirect-v3.yml'
   workflow_dispatch:
 jobs:
   deploy:
