@@ -8,19 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Try SetHTTPSConfig via signed REST call
+      - name: Attach certificate to bucket
         continue-on-error: true
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
         run: |
           set +e
-          echo '{"certificateManagerCertificate":{"certificateId":"fpq1eqao8ac60d5faq30"}}' > body.json
+          echo '{"certificateManager":{"certificateId":"fpq1eqao8ac60d5faq30"}}' > body.json
           curl -sS --aws-sigv4 "aws:amz:ru-central1:s3" \
             --user "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" \
             -X POST "https://storage.api.cloud.yandex.net/storage/v1/buckets/www.internationals.site:setHttpsConfig" \
             -H "Content-Type: application/json" \
             --data @body.json -w "\nHTTP_STATUS:%{http_code}\n" > debug_log.txt 2>&1
+          echo "== get current config ==" >> debug_log.txt
+          curl -sS --aws-sigv4 "aws:amz:ru-central1:s3" \
+            --user "$AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY" \
+            "https://storage.api.cloud.yandex.net/storage/v1/buckets/www.internationals.site:getHttpsConfig" \
+            -w "\nHTTP_STATUS:%{http_code}\n" >> debug_log.txt 2>&1
           cat debug_log.txt
       - name: Commit debug log
         if: always()
