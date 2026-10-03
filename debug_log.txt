@@ -1,2 +1,5 @@
-{"code":3,"message":"{\"params\":\"could not be nil\"}","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"params","description":"could not be nil"}]},{"@type":"type.googleapis.com/google.rpc.RequestInfo","requestId":"14ed096e-064a-48b1-84a1-b826501ca536"}]}
-HTTP_STATUS:400
+{"code":7,"message":"Access Denied","details":[{"@type":"type.googleapis.com/google.rpc.RequestInfo","requestId":"bce75a3c-d5c3-4a74-b5b8-160a631e3183"}]}
+HTTP_STATUS:403
+== get current config ==
+{"code":7,"message":"Access Denied","details":[{"@type":"type.googleapis.com/google.rpc.RequestInfo","requestId":"a225b0f4-e1c1-4b84-bfe5-2697e9d3655c"}]}
+HTTP_STATUS:403
