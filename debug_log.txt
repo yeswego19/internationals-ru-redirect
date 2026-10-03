@@ -1,22 +1,24 @@
-== dig CNAME www ==
-www.internationals.site.website.yandexcloud.net.
-== dig CNAME acme-challenge ==
-== http headers (plain) ==
-HTTP/1.1 200 OK
-Server: nginx
-Date: Fri, 02 Oct 2026 03:09:47 GMT
-Content-Type: text/html
-Content-Length: 31929
-Connection: keep-alive
-Keep-Alive: timeout=60
-Accept-Ranges: bytes
-Etag: "aee49a80ef4bf46fe79a776d6b688dc4"
-Last-Modified: Fri, 02 Oct 2026 02:58:13 GMT
-X-Amz-Request-Id: 6d8406892c5352dd
+== dig CNAME acme-challenge.www (default resolver) ==
+== via Google DNS 8.8.8.8 ==
+== via Cloudflare 1.1.1.1 ==
+== full dig output ==
 
-== https cert info ==
-subject=C = RU, ST = Moscow, L = Moscow, O = YANDEX LLC, CN = *.storage-1.yandexcloud.net
-issuer=C = BE, O = GlobalSign nv-sa, CN = GlobalSign RSA OV SSL CA 2018
-notBefore=May 18 21:36:16 2026 GMT
-notAfter=Nov 16 20:59:59 2026 GMT
-== https curl ==
+; <<>> DiG 9.18.39-0ubuntu0.24.04.7-Ubuntu <<>> _acme-challenge.www.internationals.site CNAME
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, id: 42755
+;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;_acme-challenge.www.internationals.site. IN CNAME
+
+;; AUTHORITY SECTION:
+internationals.site.	299	IN	SOA	ns1.beget.com. hostmaster.beget.com. 1789821571 300 600 86400 300
+
+;; Query time: 415 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Sat Oct 03 02:20:53 UTC 2026
+;; MSG SIZE  rcvd: 128
+
