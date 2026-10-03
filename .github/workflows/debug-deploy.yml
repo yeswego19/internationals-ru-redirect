@@ -8,20 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check DNS and HTTPS
+      - name: Check acme CNAME
         continue-on-error: true
         run: |
           set +e
-          echo "== dig CNAME www ==" > debug_log.txt
-          dig +short CNAME www.internationals.site >> debug_log.txt 2>&1
-          echo "== dig CNAME acme-challenge ==" >> debug_log.txt
+          echo "== dig CNAME acme-challenge.www (default resolver) ==" > debug_log.txt
           dig +short CNAME _acme-challenge.www.internationals.site >> debug_log.txt 2>&1
-          echo "== http headers (plain) ==" >> debug_log.txt
-          curl -sI --max-time 10 http://www.internationals.site/ >> debug_log.txt 2>&1
-          echo "== https cert info ==" >> debug_log.txt
-          echo | openssl s_client -connect www.internationals.site:443 -servername www.internationals.site 2>&1 | openssl x509 -noout -subject -issuer -dates 2>&1 >> debug_log.txt
-          echo "== https curl ==" >> debug_log.txt
-          curl -sI --max-time 10 https://www.internationals.site/ >> debug_log.txt 2>&1
+          echo "== via Google DNS 8.8.8.8 ==" >> debug_log.txt
+          dig @8.8.8.8 +short CNAME _acme-challenge.www.internationals.site >> debug_log.txt 2>&1
+          echo "== via Cloudflare 1.1.1.1 ==" >> debug_log.txt
+          dig @1.1.1.1 +short CNAME _acme-challenge.www.internationals.site >> debug_log.txt 2>&1
+          echo "== full dig output ==" >> debug_log.txt
+          dig _acme-challenge.www.internationals.site CNAME >> debug_log.txt 2>&1
           cat debug_log.txt
       - name: Commit debug log
         if: always()
