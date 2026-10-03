@@ -1,0 +1,28 @@
+name: Debug Yandex Deploy
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check acme CNAME again
+        continue-on-error: true
+        run: |
+          set +e
+          echo "current time UTC:" > debug_log.txt
+          date -u >> debug_log.txt
+          echo "== via Google 8.8.8.8 ==" >> debug_log.txt
+          dig @8.8.8.8 +short CNAME _acme-challenge.www.internationals.site >> debug_log.txt 2>&1
+          echo "== via Beget authoritative ns1.beget.com ==" >> debug_log.txt
+          dig @ns1.beget.com +short CNAME _acme-challenge.www.internationals.site >> debug_log.txt 2>&1
+          echo "== TTL/full ==" >> debug_log.txt
+          dig _acme-challenge.www.internationals.site CNAME >> debug_log.txt 2>&1
+          cat debug_log.txt
+      - name: Commit debug log
+        if: always()
+        run: |
+          git config user.name "debug-bot"; git config user.email "debug@example.com"
+          git add debug_log.txt; git commit -m "debug log" || echo none; git push
