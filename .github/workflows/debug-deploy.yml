@@ -1,0 +1,30 @@
+name: Debug Yandex Deploy
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check live CSS and HTML
+        continue-on-error: true
+        run: |
+          set +e
+          echo "== live styles.css: contacts-table rules ==" > debug_log.txt
+          curl -s https://www.internationals.site/styles.css | grep -o "contacts-table[^{]*{[^}]*}" >> debug_log.txt
+          echo >> debug_log.txt
+          echo "== live styles.css: contact-item a rule ==" >> debug_log.txt
+          curl -s https://www.internationals.site/styles.css | grep -o "\.contact-item a[^{]*{[^}]*}\|\.contact-item p,\.contact-item a[^{]*{[^}]*}" >> debug_log.txt
+          echo >> debug_log.txt
+          echo "== live index-ru.html: contacts table markup present? ==" >> debug_log.txt
+          curl -s https://www.internationals.site/index-ru.html | grep -c "contacts-table" >> debug_log.txt
+          echo "== car.jpg usage in index-ru.html ==" >> debug_log.txt
+          curl -s https://www.internationals.site/index-ru.html | grep -o ".\{60\}car\.jpg.\{60\}\|cookie-banner-contact" >> debug_log.txt
+          cat debug_log.txt
+      - name: Commit debug log
+        if: always()
+        run: |
+          git config user.name "debug-bot"; git config user.email "debug@example.com"
+          git add debug_log.txt; git commit -m "debug log" || echo none; git push
