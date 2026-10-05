@@ -140,20 +140,8 @@
   </script>
 </head>
 <body>
-  <audio id="bgMusic" preload="metadata" loop></audio>
-
   <div class="music-player">
     <div class="music-player-toggle globe" id="musicToggle"></div>
-  </div>
-
-  <div class="volume-control">
-    <i class="fas fa-volume-up volume-icon"></i>
-    <div class="volume-slider-container">
-      <div class="volume-fill" id="volumeFill"></div>
-      <input type="range" min="0" max="100" value="30" class="volume-slider" id="volumeSlider">
-    </div>
-    <i class="fas fa-volume-down volume-icon"></i>
-    <button type="button" id="muteToggle" class="mute-toggle-btn" title="Выключить музыку" aria-label="Выключить музыку"><i class="fas fa-volume-mute" id="muteIcon"></i></button>
   </div>
 
   <div id="languageDropdown">
@@ -430,7 +418,7 @@
               <i class="fab fa-whatsapp"></i>
               <div>
                 <h4 data-translate="contact_whatsapp">واتساب والهاتف</h4>
-                <div class="contacts-table-wrap"><table class="contacts-table"><tbody><tr><td><a href="https://wa.me/5352674658" target="_blank" rel="noopener">+53 52674658</a></td><td>Madeline (español, русский)</td><td><a href="mailto:madeline@internationals.click">madeline@internationals.click</a></td></tr><tr><td><a href="https://wa.me/201003187199" target="_blank" rel="noopener">+20 1003187199</a></td><td>Antoine (français, العربية)</td><td><a href="mailto:antoine@internationals.click">antoine@internationals.click</a></td></tr><tr><td><a href="https://wa.me/905455153295" target="_blank" rel="noopener">+90 545 515 32 95</a></td><td>Kenan (türkçe, русский)</td><td><a href="mailto:kenan@internationals.click">kenan@internationals.click</a></td></tr><tr><td><a href="https://wa.me/4916043300033" target="_blank" rel="noopener">+49 1604330033</a></td><td>Alexander (deutsch)</td><td><a href="mailto:alexander@internationals.click">alexander@internationals.click</a></td></tr><tr><td><a href="https://wa.me/996551207410" target="_blank" rel="noopener">+996 551207410</a></td><td>Malik (中文, русский)</td><td><a href="mailto:malik@internationals.click">malik@internationals.click</a></td></tr><tr><td><a href="https://wa.me/79991251025" target="_blank" rel="noopener">+7 9991251025</a></td><td>Artur</td><td><a href="mailto:artur@internationals.click">artur@internationals.click</a></td></tr></tbody></table></div>
+                <p><a href="https://wa.me/5352674658" target="_blank" rel="noopener">+53 52674658 Madeline (español, русский)</a><br><a href="https://wa.me/201003187199" target="_blank" rel="noopener">+20 1003187199 Antoine (français, العربية)</a><br><a href="https://wa.me/905455153295" target="_blank" rel="noopener">+90 545 515 32 95 Kenan (türkçe, русский)</a><br><a href="https://wa.me/4916043300033" target="_blank" rel="noopener">+49 1604330033 Alexander (deutsch)</a><br><a href="https://wa.me/996551207410" target="_blank" rel="noopener">+996 551207410 Malik (中文, русский)</a><br><a href="https://wa.me/79991251025" target="_blank" rel="noopener">+7 9991251025 Artur</a></p>
               </div>
             </div>
             <div class="contact-item">
@@ -503,91 +491,8 @@
 
   <script src="translations.js"></script>
   <script>
-    const audio = document.getElementById('bgMusic');
     const globe = document.getElementById('musicToggle');
     const dropdown = document.getElementById('languageDropdown');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const volumeFill = document.getElementById('volumeFill');
-    let canPlay = false;
-
-    volumeSlider.addEventListener('input', function() {
-      const volume = this.value / 100;
-      audio.volume = volume;
-      volumeFill.style.height = this.value + '%';
-      localStorage.setItem('musicVolume', volume);
-    });
-
-    const savedVolume = localStorage.getItem('musicVolume');
-    if (savedVolume !== null) {
-      const volumePercent = Math.round(savedVolume * 100);
-      volumeSlider.value = volumePercent;
-      volumeFill.style.height = volumePercent + '%';
-      audio.volume = savedVolume;
-    } else {
-      volumeFill.style.height = '30%';
-    }
-
-    const volumeContainer = document.querySelector('.volume-slider-container');
-    volumeContainer.addEventListener('click', function(e) {
-      const rect = this.getBoundingClientRect();
-      const y = e.clientY - rect.top;
-      const percent = Math.max(0, Math.min(100, 100 - (y / rect.height * 100)));
-      volumeSlider.value = percent;
-      audio.volume = percent / 100;
-      volumeFill.style.height = percent + '%';
-      localStorage.setItem('musicVolume', percent / 100);
-    });
-
-    volumeContainer.addEventListener('touchstart', function(e) {
-      e.preventDefault();
-      const rect = this.getBoundingClientRect();
-      const touch = e.touches[0];
-      const y = touch.clientY - rect.top;
-      const percent = Math.max(0, Math.min(100, 100 - (y / rect.height * 100)));
-      volumeSlider.value = percent;
-      audio.volume = percent / 100;
-      volumeFill.style.height = percent + '%';
-      localStorage.setItem('musicVolume', percent / 100);
-    });
-
-    let musicMuted = localStorage.getItem('musicMuted') === 'true';
-    const muteBtn = document.getElementById('muteToggle');
-    const muteIcon = document.getElementById('muteIcon');
-    function updateMuteIcon() {
-      muteIcon.className = musicMuted ? 'fas fa-volume-mute' : 'fas fa-volume-up';
-      muteBtn.title = musicMuted ? 'Включить музыку' : 'Выключить музыку';
-    }
-    updateMuteIcon();
-    muteBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      musicMuted = !musicMuted;
-      localStorage.setItem('musicMuted', musicMuted ? 'true' : 'false');
-      if (musicMuted) {
-        audio.pause();
-      } else {
-        canPlay = true;
-        if (!audio.src) audio.src = 'Calli.mp3';
-        audio.volume = volumeSlider.value / 100;
-        audio.play().catch(() => {});
-      }
-      updateMuteIcon();
-    });
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'musicMuted') {
-        musicMuted = e.newValue === 'true';
-        if (musicMuted) { audio.pause(); } else { audio.play().catch(() => {}); }
-        updateMuteIcon();
-      }
-    });
-
-    document.body.addEventListener('click', () => {
-      if (canPlay) return;
-      canPlay = true;
-      if (musicMuted) return;
-      audio.src = 'Calli.mp3';
-      audio.volume = volumeSlider.value / 100;
-      audio.play().catch(() => {});
-    }, { once: true });
 
     globe.addEventListener('click', e => {
       e.stopPropagation();
