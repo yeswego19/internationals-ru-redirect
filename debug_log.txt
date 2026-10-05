@@ -1,6 +1,0 @@
-== bgMusic/volume-control count (should be 0) ==
-0
-== musicToggle/languageDropdown count (should be >0) ==
-4
-== taxi.html bgMusic (should be 0) ==
-0
