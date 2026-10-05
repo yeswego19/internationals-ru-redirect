@@ -8,20 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check live CSS and HTML
+      - name: Verify
         continue-on-error: true
         run: |
           set +e
-          echo "== live styles.css: contacts-table rules ==" > debug_log.txt
-          curl -s https://www.internationals.site/styles.css | grep -o "contacts-table[^{]*{[^}]*}" >> debug_log.txt
-          echo >> debug_log.txt
-          echo "== live styles.css: contact-item a rule ==" >> debug_log.txt
-          curl -s https://www.internationals.site/styles.css | grep -o "\.contact-item a[^{]*{[^}]*}\|\.contact-item p,\.contact-item a[^{]*{[^}]*}" >> debug_log.txt
-          echo >> debug_log.txt
-          echo "== live index-ru.html: contacts table markup present? ==" >> debug_log.txt
-          curl -s https://www.internationals.site/index-ru.html | grep -c "contacts-table" >> debug_log.txt
-          echo "== car.jpg usage in index-ru.html ==" >> debug_log.txt
-          curl -s https://www.internationals.site/index-ru.html | grep -o ".\{60\}car\.jpg.\{60\}\|cookie-banner-contact" >> debug_log.txt
+          echo "== bgMusic/volume-control count (should be 0) ==" > debug_log.txt
+          curl -s https://www.internationals.site/index-ru.html | grep -c "bgMusic\|volume-control" >> debug_log.txt
+          echo "== musicToggle/languageDropdown count (should be >0) ==" >> debug_log.txt
+          curl -s https://www.internationals.site/index-ru.html | grep -c "musicToggle\|languageDropdown" >> debug_log.txt
+          echo "== taxi.html bgMusic (should be 0) ==" >> debug_log.txt
+          curl -s https://www.internationals.site/taxi.html | grep -c "bgMusic" >> debug_log.txt
           cat debug_log.txt
       - name: Commit debug log
         if: always()
