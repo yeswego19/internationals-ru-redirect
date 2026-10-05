@@ -1,22 +1,6 @@
-== live styles.css: contacts-table rules ==
-contacts-table-wrap{overflow-x:auto;max-width:100%}
-contacts-table{border-collapse:collapse;width:100%;font-size:.95rem}
-contacts-table td{padding:.6rem .8rem;border-bottom:1px solid var(--border);vertical-align:middle;word-break:break-word}
-contacts-table tr:last-child td{border-bottom:none}
-contacts-table td:first-child{white-space:nowrap;font-weight:600}
-contacts-table a{color:var(--primary);text-decoration:none}
-contacts-table a:hover{text-decoration:underline}
-contacts-table{display:block;font-size:.85rem}
-contacts-table tbody{display:block}
-contacts-table tr{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;padding:.5rem 0;border-bottom:1px solid var(--border)}
-contacts-table tr:last-child{border-bottom:none}
-contacts-table td{border-bottom:none;padding:0;white-space:normal}
-
-== live styles.css: contact-item a rule ==
-.contact-item p,.contact-item a{font-size:.9rem;word-break:break-all}
-.contact-item p,.contact-item a{font-size:.85rem}
-
-== live index-ru.html: contacts table markup present? ==
-1
-== car.jpg usage in index-ru.html ==
-cookie-banner-contact
+== bgMusic/volume-control count (should be 0) ==
+0
+== musicToggle/languageDropdown count (should be >0) ==
+4
+== taxi.html bgMusic (should be 0) ==
+0
