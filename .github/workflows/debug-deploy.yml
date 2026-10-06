@@ -8,21 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check with browser-like headers
+      - name: Fetch actual body with browser UA
         continue-on-error: true
         run: |
           set +e
-          echo "== with browser UA ==" > debug_log.txt
-          curl -sI --max-time 10 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36" http://internationals.site/ >> debug_log.txt 2>&1
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
+          echo "== body with browser UA (http) ==" > debug_log.txt
+          curl -s --max-time 10 -A "$UA" http://internationals.site/ >> debug_log.txt 2>&1
           echo >> debug_log.txt
-          echo "== raw body of 403 ==" >> debug_log.txt
-          curl -s --max-time 10 http://internationals.site/ >> debug_log.txt 2>&1
-          echo >> debug_log.txt
-          echo "== test index.html directly ==" >> debug_log.txt
-          curl -sI --max-time 10 http://internationals.site/index.html >> debug_log.txt 2>&1
-          echo >> debug_log.txt
-          echo "== test via Host header on raw IP ==" >> debug_log.txt
-          curl -sI --max-time 10 -H "Host: internationals.site" http://185.50.25.55/ >> debug_log.txt 2>&1
+          echo "== body with browser UA (https) ==" >> debug_log.txt
+          curl -sL --max-time 10 -A "$UA" https://internationals.site/ -D - -o /tmp/https_body.html >> debug_log.txt 2>&1
+          head -c 1500 /tmp/https_body.html >> debug_log.txt
           cat debug_log.txt
       - name: Commit debug log
         if: always()
