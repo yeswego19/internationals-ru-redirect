@@ -8,18 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check bare domain
+      - name: Check with browser-like headers
         continue-on-error: true
         run: |
           set +e
-          echo "== HTTP (no www) ==" > debug_log.txt
-          curl -sIL --max-time 10 http://internationals.site/ >> debug_log.txt 2>&1
+          echo "== with browser UA ==" > debug_log.txt
+          curl -sI --max-time 10 -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36" http://internationals.site/ >> debug_log.txt 2>&1
           echo >> debug_log.txt
-          echo "== HTTPS (no www) ==" >> debug_log.txt
-          curl -sIL --max-time 10 https://internationals.site/ >> debug_log.txt 2>&1
+          echo "== raw body of 403 ==" >> debug_log.txt
+          curl -s --max-time 10 http://internationals.site/ >> debug_log.txt 2>&1
           echo >> debug_log.txt
-          echo "== DNS A record ==" >> debug_log.txt
-          dig +short A internationals.site >> debug_log.txt 2>&1
+          echo "== test index.html directly ==" >> debug_log.txt
+          curl -sI --max-time 10 http://internationals.site/index.html >> debug_log.txt 2>&1
+          echo >> debug_log.txt
+          echo "== test via Host header on raw IP ==" >> debug_log.txt
+          curl -sI --max-time 10 -H "Host: internationals.site" http://185.50.25.55/ >> debug_log.txt 2>&1
           cat debug_log.txt
       - name: Commit debug log
         if: always()
