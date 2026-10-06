@@ -8,20 +8,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Check radio icon asset
+      - name: Check bare domain
         continue-on-error: true
         run: |
           set +e
-          echo "== HEAD assets/radio-icon.svg ==" > debug_log.txt
-          curl -sI https://www.internationals.site/assets/radio-icon.svg >> debug_log.txt
-          echo "== content ==" >> debug_log.txt
-          curl -s https://www.internationals.site/assets/radio-icon.svg >> debug_log.txt
+          echo "== HTTP (no www) ==" > debug_log.txt
+          curl -sIL --max-time 10 http://internationals.site/ >> debug_log.txt 2>&1
           echo >> debug_log.txt
-          echo "== footer radio button markup ==" >> debug_log.txt
-          curl -s https://www.internationals.site/index-ru.html | grep -o "radio.html.\{0,160\}" >> debug_log.txt
+          echo "== HTTPS (no www) ==" >> debug_log.txt
+          curl -sIL --max-time 10 https://internationals.site/ >> debug_log.txt 2>&1
           echo >> debug_log.txt
-          echo "== footer copyright line ==" >> debug_log.txt
-          curl -s https://www.internationals.site/index-ru.html | grep -o ".\{40\}Internationals.\{0,30\}Privacy.\{0,10\}\|.\{40\}prava.\{0,60\}\|.\{40\}2026.\{0,80\}" >> debug_log.txt
+          echo "== DNS A record ==" >> debug_log.txt
+          dig +short A internationals.site >> debug_log.txt 2>&1
           cat debug_log.txt
       - name: Commit debug log
         if: always()
