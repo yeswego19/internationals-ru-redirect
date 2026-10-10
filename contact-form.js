@@ -2,7 +2,7 @@
    API set  -> sends the form with files to a Yandex Cloud Function (which e-mails it).
    API empty -> fallback: opens the visitor's mail app (mailto), no files. */
 (function () {
-  var API = '';                       // <- Yandex Cloud Function URL goes here
+  var API = 'https://functions.yandexcloud.net/d4euiknhlp54cij0mq09';
   var TO = 'mailtomorrow@yandex.ru';
   var MAX_TOTAL = 2400 * 1024;        // total files limit (function accepts ~3.5 MB request)
   var form = document.getElementById('contactForm');
