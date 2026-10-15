@@ -308,6 +308,9 @@
       } else {
         const v = document.createElement('video');
         v.src = m.src; v.loop = true; v.muted = false; v.playsInline = true; v.preload = 'auto';
+        v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+        v.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:none;clip-path:circle(0px at 0 0);';
+        overlay.insertBefore(v, canvas);
         vidCache[n] = v;
       }
     });
@@ -321,13 +324,14 @@
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (currentVideo) currentVideo.style.clipPath = 'circle(' + Math.max(currentRadius, 0) + 'px at ' + originX + 'px ' + originY + 'px)';
       if (currentRadius <= 0) return;
       ctx.save();
       ctx.beginPath();
       ctx.arc(originX, originY, currentRadius, 0, Math.PI * 2);
       ctx.clip();
       if (currentVideo) {
-        ctx.drawImage(currentVideo, 0, 0, canvas.width, canvas.height);
+        /* video is shown by its own <video> element, clipped with CSS */
       } else if (currentImg && currentImg.complete && currentImg.naturalWidth) {
         const iw = currentImg.naturalWidth, ih = currentImg.naturalHeight;
         const scale = Math.max(canvas.width / iw, canvas.height / ih);
@@ -353,7 +357,7 @@
         if (currentRadius < 1) {
           currentRadius = 0;
           overlay.style.opacity = '0';
-          if (currentVideo) { currentVideo.pause(); currentVideo.currentTime = 0; currentVideo = null; }
+          if (currentVideo) { currentVideo.pause(); currentVideo.currentTime = 0; currentVideo.style.display = 'none'; currentVideo.style.clipPath = 'circle(0px at 0 0)'; currentVideo = null; }
           cancelAnimationFrame(animFrame); animFrame = null;
           return;
         }
@@ -365,10 +369,14 @@
       originX = x; originY = y;
       isPressed = true;
       const m = serviceMedia[num];
+      Object.values(vidCache).forEach(v => { v.style.display = 'none'; v.pause(); });
       if (m.type === 'video') {
         currentImg = null;
         currentVideo = vidCache[num];
-        currentVideo.play().catch(() => {});
+        currentVideo.style.display = 'block';
+        currentVideo.muted = false;
+        const pp = currentVideo.play();
+        if (pp && pp.catch) pp.catch(() => { currentVideo.muted = true; currentVideo.play().catch(() => {}); });
       } else {
         currentVideo = null;
         currentImg = imgCache[num];
