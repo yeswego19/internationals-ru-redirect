@@ -59,7 +59,7 @@ p{margin-bottom:1rem;color:var(--text-sec);word-wrap:break-word}
 .hamburger span{width:25px;height:3px;background:var(--text);transition:all .3s}
 
 /* Hero */
-.hero{padding:80px 0;background:linear-gradient(135deg,rgba(47,85,151,.35) 0%,rgba(31,63,131,.35) 100%),url('assets/background.jpg');background-position:center top;background-size:cover;min-height:100vh;color:#fff;position:relative;overflow:hidden;width:100%}
+.hero{padding:80px 0;background:linear-gradient(135deg,rgba(47,85,151,.35) 0%,rgba(31,63,131,.35) 100%),url('assets/background.webp');background-position:center top;background-size:cover;min-height:100vh;color:#fff;position:relative;overflow:hidden;width:100%}
 .hero-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;width:100%}
 .hero-title{font-size:3.5rem;font-weight:700;margin-bottom:1.5rem;line-height:1.1;margin-top:120px}
 .highlight{background:linear-gradient(45deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -95,7 +95,7 @@ p{margin-bottom:1rem;color:var(--text-sec);word-wrap:break-word}
 .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--primary)}
 
 /* Cookie */
-.cookie-banner-contact{text-align:center;padding:50px 30px;max-width:600px;background:url('assets/car.jpg') center/cover no-repeat;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.15);position:relative;margin:0 auto}
+.cookie-banner-contact{text-align:center;padding:50px 30px;max-width:600px;background:url('assets/car.webp') center/cover no-repeat;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.15);position:relative;margin:0 auto}
 .cookie-banner-contact h3,.cookie-banner-contact p,.cookie-banner-contact button{position:relative;z-index:2}
 .cookie-banner-contact h3{font-size:26px;margin-bottom:16px;color:#1f2937}
 .cookie-banner-contact p{font-size:17px;color:#6b7280;margin-bottom:28px;line-height:1.6}
