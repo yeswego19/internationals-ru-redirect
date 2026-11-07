@@ -170,7 +170,8 @@
       .mobile-banners{ display:flex; }
       .feedback-container{ margin:18px; padding:18px; }
     }
-  </style>
+  .consent-row{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.4;margin:10px 0;text-align:left;cursor:pointer}.consent-row input{width:auto;margin-top:3px;flex:none}.consent-row a{color:inherit;text-decoration:underline}
+</style>
 </head>
 <body>
 
@@ -216,6 +217,8 @@
           <audio id="previewPlayer" controls></audio>
           <button type="button" id="deleteBtn" class="translate" data-key="delete">🗑 Delete and re-record</button>
         </div>
+        <label class="consent-row"><input type="checkbox" id="consentProc" required> <span><span class="translate" data-key="consentProc">Я даю согласие на обработку моих персональных данных:</span> <a href="assets/consent_ru.html" target="_blank" class="translate" data-key="consentLink">Согласие</a>, <a href="assets/privacy_policy_ru.html" target="_blank" class="translate" data-key="policyLink">Политика конфиденциальности</a></span></label>
+        <label class="consent-row"><input type="checkbox" id="consentPub" required> <span class="translate" data-key="consentPub">Отдельно даю согласие на публикацию моего имени, текста отзыва и голосовой записи на публичной странице отзывов.</span></label>
         <button type="submit" id="submitBtn" class="translate" data-key="send">Send Feedback</button>
       </form>
     </div>
@@ -237,13 +240,13 @@
   <script>
     /* ===== Translations & language ===== */
     var translations = {
-      en:{ feedback:"Feedback", name:"Your name", message:"Your impressions, tips, contacts (optional)", record:"🎙 Record Audio", stop:"⏹ Stop Recording", delete:"🗑 Delete and re-record", send:"Send Feedback", recent:"Recent Feedback", loading:"Loading reviews...", sending:"Sending...", sent:"✅ Sent!", replyLabel:"Our reply:" },
-      ru:{ feedback:"Отзывы", name:"Ваше имя", message:"Ваши впечатления, советы, контакты (необязательно)", record:"🎙 Записать аудио", stop:"⏹ Остановить запись", delete:"🗑 Удалить и перезаписать", send:"Отправить отзыв", recent:"Последние отзывы", loading:"Загрузка отзывов...", sending:"Отправка...", sent:"✅ Отправлено!", replyLabel:"Наш ответ:" },
-      de:{ feedback:"Feedback", name:"Ihr Name", message:"Ihre Eindrücke, Tipps, Kontakte (optional)", record:"🎙 Audio aufnehmen", stop:"⏹ Aufnahme stoppen", delete:"🗑 Löschen und neu aufnehmen", send:"Feedback senden", recent:"Neueste Bewertungen", loading:"Bewertungen werden geladen...", sending:"Senden...", sent:"✅ Gesendet!", replyLabel:"Unsere Antwort:" },
-      es:{ feedback:"Comentarios", name:"Tu nombre", message:"Tus impresiones, consejos, contactos (opcional)", record:"🎙 Grabar audio", stop:"⏹ Detener grabación", delete:"🗑 Eliminar y volver a grabar", send:"Enviar comentario", recent:"Comentarios recientes", loading:"Cargando comentarios...", sending:"Enviando...", sent:"✅ ¡Enviado!", replyLabel:"Nuestra respuesta:" },
-      pt:{ feedback:"Comentários", name:"Seu nome", message:"Suas impressões, dicas, contatos (opcional)", record:"🎙 Gravar áudio", stop:"⏹ Parar gravação", delete:"🗑 Excluir e regravar", send:"Enviar feedback", recent:"Feedback recente", loading:"Carregando comentários...", sending:"Enviando...", sent:"✅ Enviado!", replyLabel:"Nossa resposta:" },
-      zh:{ feedback:"反馈", name:"您的姓名", message:"您的印象、建议、联系方式(可选)", record:"🎙 录音", stop:"⏹ 停止录音", delete:"🗑 删除并重新录音", send:"发送反馈", recent:"最新评论", loading:"正在加载评论...", sending:"发送中...", sent:"✅ 已发送!", replyLabel:"我们的回复:" },
-      ar:{ feedback:"الملاحظات", name:"اسمك", message:"انطباعاتك، نصائحك، جهات الاتصال (اختياري)", record:"🎙 تسجيل الصوت", stop:"⏹ إيقاف التسجيل", delete:"🗑 حذف وإعادة التسجيل", send:"إرسال الملاحظات", recent:"أحدث التعليقات", loading:"جاري تحميل التعليقات...", sending:"جاري الإرسال...", sent:"✅ تم الإرسال!", replyLabel:"ردنا:" }
+      en:{ consentProc:"I agree to the processing of my personal data:", consentLink:"Consent", policyLink:"Privacy Policy", consentPub:"I separately agree to the publication of my name, review text and voice recording on the public reviews page.", feedback:"Feedback", name:"Your name", message:"Your impressions, tips, contacts (optional)", record:"🎙 Record Audio", stop:"⏹ Stop Recording", delete:"🗑 Delete and re-record", send:"Send Feedback", recent:"Recent Feedback", loading:"Loading reviews...", sending:"Sending...", sent:"✅ Sent!", replyLabel:"Our reply:" },
+      ru:{ consentProc:"Я даю согласие на обработку моих персональных данных:", consentLink:"Согласие", policyLink:"Политика конфиденциальности", consentPub:"Отдельно даю согласие на публикацию моего имени, текста отзыва и голосовой записи на публичной странице отзывов.", feedback:"Отзывы", name:"Ваше имя", message:"Ваши впечатления, советы, контакты (необязательно)", record:"🎙 Записать аудио", stop:"⏹ Остановить запись", delete:"🗑 Удалить и перезаписать", send:"Отправить отзыв", recent:"Последние отзывы", loading:"Загрузка отзывов...", sending:"Отправка...", sent:"✅ Отправлено!", replyLabel:"Наш ответ:" },
+      de:{ consentProc:"Ich stimme der Verarbeitung meiner personenbezogenen Daten zu:", consentLink:"Einwilligung", policyLink:"Datenschutzrichtlinie", consentPub:"Ich stimme separat der Veröffentlichung meines Namens, Bewertungstextes und meiner Sprachaufnahme auf der öffentlichen Bewertungsseite zu.", feedback:"Feedback", name:"Ihr Name", message:"Ihre Eindrücke, Tipps, Kontakte (optional)", record:"🎙 Audio aufnehmen", stop:"⏹ Aufnahme stoppen", delete:"🗑 Löschen und neu aufnehmen", send:"Feedback senden", recent:"Neueste Bewertungen", loading:"Bewertungen werden geladen...", sending:"Senden...", sent:"✅ Gesendet!", replyLabel:"Unsere Antwort:" },
+      es:{ consentProc:"Doy mi consentimiento para el tratamiento de mis datos personales:", consentLink:"Consentimiento", policyLink:"Política de privacidad", consentPub:"Doy mi consentimiento por separado para publicar mi nombre, el texto del comentario y la grabación de voz en la página pública de comentarios.", feedback:"Comentarios", name:"Tu nombre", message:"Tus impresiones, consejos, contactos (opcional)", record:"🎙 Grabar audio", stop:"⏹ Detener grabación", delete:"🗑 Eliminar y volver a grabar", send:"Enviar comentario", recent:"Comentarios recientes", loading:"Cargando comentarios...", sending:"Enviando...", sent:"✅ ¡Enviado!", replyLabel:"Nuestra respuesta:" },
+      pt:{ consentProc:"Concordo com o tratamento dos meus dados pessoais:", consentLink:"Consentimento", policyLink:"Política de privacidade", consentPub:"Concordo separadamente com a publicação do meu nome, do texto do comentário e da gravação de voz na página pública de comentários.", feedback:"Comentários", name:"Seu nome", message:"Suas impressões, dicas, contatos (opcional)", record:"🎙 Gravar áudio", stop:"⏹ Parar gravação", delete:"🗑 Excluir e regravar", send:"Enviar feedback", recent:"Feedback recente", loading:"Carregando comentários...", sending:"Enviando...", sent:"✅ Enviado!", replyLabel:"Nossa resposta:" },
+      zh:{ consentProc:"我同意处理我的个人数据：", consentLink:"同意书", policyLink:"隐私政策", consentPub:"我另行同意在公开的评论页面发布我的姓名、评论内容和语音录音。", feedback:"反馈", name:"您的姓名", message:"您的印象、建议、联系方式(可选)", record:"🎙 录音", stop:"⏹ 停止录音", delete:"🗑 删除并重新录音", send:"发送反馈", recent:"最新评论", loading:"正在加载评论...", sending:"发送中...", sent:"✅ 已发送!", replyLabel:"我们的回复:" },
+      ar:{ consentProc:"أوافق على معالجة بياناتي الشخصية:", consentLink:"الموافقة", policyLink:"سياسة الخصوصية", consentPub:"أوافق بشكل منفصل على نشر اسمي ونص الملاحظة وتسجيلي الصوتي في صفحة التعليقات العامة.", feedback:"الملاحظات", name:"اسمك", message:"انطباعاتك، نصائحك، جهات الاتصال (اختياري)", record:"🎙 تسجيل الصوت", stop:"⏹ إيقاف التسجيل", delete:"🗑 حذف وإعادة التسجيل", send:"إرسال الملاحظات", recent:"أحدث التعليقات", loading:"جاري تحميل التعليقات...", sending:"جاري الإرسال...", sent:"✅ تم الإرسال!", replyLabel:"ردنا:" }
     };
     function getPreferredLang() {
       var stored = localStorage.getItem('language') || localStorage.getItem('userLang');
@@ -254,6 +257,8 @@
     function applyTranslations() {
       var lang = getPreferredLang(), t = translations[lang] || translations.en;
       document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+      document.querySelectorAll('a[href="assets/consent_ru.html"]').forEach(function(a){ a.href = 'assets/consent_' + (lang==='ru'?'ru':'en') + '.html'; });
+      document.querySelectorAll('a[href="assets/privacy_policy_ru.html"]').forEach(function(a){ a.href = 'assets/privacy_policy_' + (lang==='ru'?'ru':'en') + '.html'; });
       document.querySelectorAll('.translate').forEach(function(el){
         var key = el.dataset.key; if(!key) return;
         var val = t[key] || translations.en[key] || el.textContent;
@@ -453,6 +458,7 @@
         e.preventDefault();
         var name=document.getElementById('name').value.trim(), message=document.getElementById('message').value.trim();
         if(!name||!message){ showError('Please fill in name and message'); return; }
+        if(!document.getElementById('consentProc').checked||!document.getElementById('consentPub').checked){ showError(getPreferredLang()==='ru'?'Подтвердите согласие на обработку данных и на публикацию отзыва':'Please confirm both consents'); return; }
         if(audioBlob&&audioBlob.size<100){ showError('Audio too short or corrupted'); return; }
         submitBtn.disabled=true;
         var lang=getPreferredLang();
@@ -461,6 +467,7 @@
           var formData = new FormData();
           formData.append('contact', name);
           formData.append('message', message);
+          formData.append('consent_proc','1'); formData.append('consent_pub','1'); formData.append('consent_version','2026-11-04');
           if(audioBlob){
             var ext=audioBlob.type.includes('ogg')?'ogg':'webm';
             formData.append('audio', audioBlob, 'voice-'+Date.now()+'.'+ext);

@@ -56,10 +56,24 @@ try {
         [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
     );
 
-    $stmt = $pdo->prepare(
-        'INSERT INTO feedback (contact, message, audio_url, created_at) VALUES (?, ?, ?, NOW())'
-    );
-    $stmt->execute([$contact, $message, $audioUrl]);
+    $consentProc = !empty($_POST['consent_proc']) ? 1 : 0;
+    $consentPub  = !empty($_POST['consent_pub']) ? 1 : 0;
+    $consentVer  = isset($_POST['consent_version']) ? substr(trim($_POST['consent_version']), 0, 20) : '';
+
+    try {
+        // Records who agreed to what and when (server time). Needs feedback_consent.sql applied once.
+        $stmt = $pdo->prepare(
+            'INSERT INTO feedback (contact, message, audio_url, created_at, consent_proc, consent_pub, consent_version, consent_at)
+             VALUES (?, ?, ?, NOW(), ?, ?, ?, NOW())'
+        );
+        $stmt->execute([$contact, $message, $audioUrl, $consentProc, $consentPub, $consentVer]);
+    } catch (Exception $e) {
+        // Columns not added yet: save the review the old way so nothing is lost
+        $stmt = $pdo->prepare(
+            'INSERT INTO feedback (contact, message, audio_url, created_at) VALUES (?, ?, ?, NOW())'
+        );
+        $stmt->execute([$contact, $message, $audioUrl]);
+    }
 
     echo json_encode([
         'success' => true,

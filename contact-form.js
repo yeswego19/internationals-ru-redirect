@@ -9,13 +9,13 @@
   if (!form) return;
 
   var T = {
-    ru: { fill: 'Заполните email, тему и сообщение.', mail: 'Введите корректный email.', sending: 'Отправляем...',
+    ru: { consent: 'Подтвердите согласие на обработку персональных данных.', fill: 'Заполните email, тему и сообщение.', mail: 'Введите корректный email.', sending: 'Отправляем...',
           ok: 'Сообщение отправлено. Мы скоро свяжемся с вами.',
           fail: 'Не удалось отправить. Напишите нам на ' + TO,
           big: 'Файлы слишком большие (до 2,4 МБ в сумме). Отправьте их нам в WhatsApp или на ' + TO,
           opened: 'Открываем вашу почтовую программу. Если ничего не открылось, напишите на ' + TO + ' или откройте письмо в:',
           files: 'Файлы прикрепите к письму в вашей почте.' },
-    en: { fill: 'Please fill in email, subject and message.', mail: 'Please enter a valid email.', sending: 'Sending...',
+    en: { consent: 'Please confirm consent to personal data processing.', fill: 'Please fill in email, subject and message.', mail: 'Please enter a valid email.', sending: 'Sending...',
           ok: 'Message sent. We will contact you shortly.',
           fail: 'Could not send. Please email us at ' + TO,
           big: 'Files are too large (2.4 MB total max). Please send them via WhatsApp or to ' + TO,
@@ -89,6 +89,8 @@
     var subject = ((document.getElementById('subject') || {}).value || '').trim();
     var message = ((document.getElementById('message') || {}).value || '').trim();
     if (!email || !subject || !message) { say(t('fill'), false); return; }
+    var cb = document.getElementById('consent'); if (cb && !cb.checked) { say(t('consent'), false); return; }
+    message += '\n\n---\nСогласие на обработку персональных данных: дано ' + new Date().toISOString() + ', редакция от 04.11.2026';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { say(t('mail'), false); return; }
     if (!API) { viaMailto(email, subject, message); return; }
 

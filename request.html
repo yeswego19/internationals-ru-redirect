@@ -63,18 +63,20 @@
                 <div class="form-group"><input type="text" id="subject" data-translate-placeholder="form_subject" placeholder="Subject" required></div>
                 <div class="form-group"><textarea id="message" data-translate-placeholder="form_message" placeholder="Your message" rows="5" required></textarea></div>
                 <div class="form-group"><input type="file" id="attachment" multiple></div>
+            <div class="form-group consent-group"><label style="display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.4;cursor:pointer;text-align:left"><input type="checkbox" id="consent" required style="margin-top:3px;width:auto;flex:none"><span><span data-translate="consent_pre">I agree to the processing of my personal data:</span> <a href="assets/consent_ru.html" target="privacy_tab" data-translate="consent_link">Consent</a> · <a href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">Privacy Policy</a></span></label></div>
                 <button type="submit" class="btn btn-primary btn-full" data-translate="form_submit">Send message</button>
             </form>
         </div>
     </div>
   <script src="translations.js"></script>
   <script>
-    const supportedLangs = ['en','ru','de','es','pt','zh','ar','fr','kk','uz','tg','az','ja','ko','hi','tr','it','id','ms','vi','pl','nl','cs','sv','fa','fi','ne','bg','sr','hy','ka','et','lv','mn','ky'];
+    const supportedLangs = ['en','ru','de','es','pt','zh','ar','fr','kk','uz','tg','az','ja','ko','hi','tr','it','id','ms','vi','pl','nl','cs','sv','fa','fi','ne','bg','sr','hy','ka','et','lv','mn','ky','uk','be','lt','ro','tk'];
     let userLang = navigator.language || navigator.userLanguage;
     userLang = (userLang || 'en').split('-')[0];
     const lang = localStorage.getItem('language') || (supportedLangs.includes(userLang) ? userLang : 'en');
     document.documentElement.lang = lang;
     document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+    (function(){ var L=['ar','az','bg','cs','de','en','es','et','hy','ka','kk','ko','ky','lv','mn','pl','pt','ru','sr','tg','uz','vi','zh','uk','be','lt','ro','tk']; var l=L.includes(lang)?lang:'en'; document.querySelectorAll('a[href="assets/privacy_policy_ru.html"]').forEach(function(a){a.href='assets/privacy_policy_'+l+'.html';}); document.querySelectorAll('a[href="assets/consent_ru.html"]').forEach(function(a){a.href='assets/consent_'+l+'.html';}); })();
     document.querySelectorAll('[data-translate]').forEach(el => {
       const key = el.dataset.translate;
       if (translations[lang] && translations[lang][key]) el.textContent = translations[lang][key];

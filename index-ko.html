@@ -40,6 +40,11 @@
   <link rel="alternate" hreflang="et" href="https://www.internationals.site/index-et.html" />
   <link rel="alternate" hreflang="lv" href="https://www.internationals.site/index-lv.html" />
   <link rel="alternate" hreflang="mn" href="https://www.internationals.site/index-mn.html" />
+  <link rel="alternate" hreflang="uk" href="https://www.internationals.site/index-uk.html" />
+  <link rel="alternate" hreflang="be" href="https://www.internationals.site/index-be.html" />
+  <link rel="alternate" hreflang="lt" href="https://www.internationals.site/index-lt.html" />
+  <link rel="alternate" hreflang="ro" href="https://www.internationals.site/index-ro.html" />
+  <link rel="alternate" hreflang="tk" href="https://www.internationals.site/index-tk.html" />
   <link rel="alternate" hreflang="ky" href="https://www.internationals.site/index-ky.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.internationals.site/" />
   <meta name="description" content="문서, 공증 번역, 아포스티유, 웹사이트 및 비디오의 전문 번역 서비스. 선원, 여행자 및 전 세계 국제 고객을 위한 빠르고 정확한 번역.">
@@ -122,16 +127,7 @@
       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105858281', 'ym');
-    ym(105858281, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-0780Z702Y0';
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0780Z702Y0');
+    ym(105858281, 'init', {ssr:true, webvisor:false, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
   }
 
   if (localStorage.getItem('cookieConsent') === 'accepted') {
@@ -192,6 +188,11 @@
     <div class="language-option" data-lang="tr">TR<span>Türkçe</span></div>
     <div class="language-option" data-lang="uz">UZ<span>Oʻzbekcha</span></div>
     <div class="language-option" data-lang="vi">VI<span>Tiếng Việt</span></div>
+    <div class="language-option" data-lang="uk">UK<span>Українська</span></div>
+    <div class="language-option" data-lang="be">BE<span>Беларуская</span></div>
+    <div class="language-option" data-lang="lt">LT<span>Lietuvių</span></div>
+    <div class="language-option" data-lang="ro">RO<span>Română</span></div>
+    <div class="language-option" data-lang="tk">TK<span>Türkmençe</span></div>
   </div>
 
   <header class="header" id="header">
@@ -414,7 +415,8 @@
   <section id="contact" class="contact">
     <div class="contact-overlay" id="contactOverlay">
       <div class="cookie-banner-contact">
-        <p data-translate="cookie_text">실수로 이 사이트에 접속하셨다면 — 분석 쿠키를 수락하지 마세요.</p>
+        <p data-translate="cookie_text">사이트 운영과 이용 현황 파악을 위해 쿠키와 Yandex Metrica를 사용합니다. ‘수락’을 누르면 이에 동의하게 됩니다. 자세한 내용은 개인정보 보호정책을 확인하세요.</p>
+        <p style="margin:0 0 10px"><a href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy" class="cookie-policy-link">Privacy Policy</a></p>
         <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;">
           <button class="cookie-accept" id="acceptCookies" data-translate="cookie_accept">수락</button>
           <button class="cookie-accept" id="declineCookies" data-translate="cookie_decline" style="background:#6b7280;">Decline</button>
@@ -475,6 +477,7 @@
             <div class="form-group"><input type="text" id="subject" data-translate-placeholder="form_subject" placeholder="제목" required></div>
             <div class="form-group"><textarea id="message" data-translate-placeholder="form_message" placeholder="메시지" rows="5" required></textarea></div>
             <div class="form-group"><input type="file" id="attachment" multiple></div>
+            <div class="form-group consent-group"><label style="display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.4;cursor:pointer;text-align:left"><input type="checkbox" id="consent" required style="margin-top:3px;width:auto;flex:none"><span><span data-translate="consent_pre">개인정보 처리에 동의합니다:</span> <a href="assets/consent_ru.html" target="privacy_tab" data-translate="consent_link">동의서</a> · <a href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">개인정보 보호정책</a></span></label></div>
             <button type="submit" class="btn btn-primary btn-full" data-translate="form_submit">메시지 보내기</button>
           </form>
         </div>
@@ -505,7 +508,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>©Internationals' 2026. Вы просматриваете региональное зеркало сайта. Все права защищены. &nbsp;|&nbsp; <a id="privacyLink" href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">개인정보 보호정책</a></p>
+      <p>©Internationals' 2026. Вы просматриваете региональное зеркало сайта. Все права защищены. &nbsp;|&nbsp; <a id="privacyLink" href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">개인정보 보호정책</a> &nbsp;|&nbsp; <a href="assets/consent_ru.html" target="privacy_tab" data-translate="consent_link">동의서</a></p>
     </div>
   </footer>
 
@@ -608,7 +611,7 @@
       }
     });
 
-    const supportedLangs = ['en','ru','de','es','pt','zh','ar','fr','kk','uz','tg','az','ja','ko','hi','tr','it','id','ms','vi','pl','nl','cs','sv','fa','fi','ne','bg','sr','hy','ka','et','lv','mn','ky'];
+    const supportedLangs = ['en','ru','de','es','pt','zh','ar','fr','kk','uz','tg','az','ja','ko','hi','tr','it','id','ms','vi','pl','nl','cs','sv','fa','fi','ne','bg','sr','hy','ka','et','lv','mn','ky','uk','be','lt','ro','tk'];
     let userLang = navigator.language || navigator.userLanguage;
     userLang = userLang.split('-')[0];
     let currentLang = localStorage.getItem('language') || 'ko';
@@ -629,8 +632,10 @@
       document.querySelectorAll('.language-option').forEach(opt => {
         opt.classList.toggle('active', opt.dataset.lang === lang);
       });
-      var __privacyLangs = ['ar','de','en','es','pt','ru','zh'];
+      var __privacyLangs = ['ar','az','bg','cs','de','en','es','et','hy','ka','kk','ko','ky','lv','mn','pl','pt','ru','sr','tg','uz','vi','zh','uk','be','lt','ro','tk'];
       document.getElementById('privacyLink').href = 'assets/privacy_policy_' + (__privacyLangs.includes(lang) ? lang : 'en') + '.html';
+      document.querySelectorAll('a[href="assets/privacy_policy_ru.html"]').forEach(function(a){ a.href = 'assets/privacy_policy_' + (__privacyLangs.includes(lang) ? lang : 'en') + '.html'; });
+      document.querySelectorAll('a[href="assets/consent_ru.html"]').forEach(function(a){ a.href = 'assets/consent_' + (__privacyLangs.includes(lang) ? lang : 'en') + '.html'; });
       dropdown.classList.remove('show');
     }
 

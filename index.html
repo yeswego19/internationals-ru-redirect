@@ -40,6 +40,11 @@
   <link rel="alternate" hreflang="et" href="https://www.internationals.site/index-et.html" />
   <link rel="alternate" hreflang="lv" href="https://www.internationals.site/index-lv.html" />
   <link rel="alternate" hreflang="mn" href="https://www.internationals.site/index-mn.html" />
+  <link rel="alternate" hreflang="uk" href="https://www.internationals.site/index-uk.html" />
+  <link rel="alternate" hreflang="be" href="https://www.internationals.site/index-be.html" />
+  <link rel="alternate" hreflang="lt" href="https://www.internationals.site/index-lt.html" />
+  <link rel="alternate" hreflang="ro" href="https://www.internationals.site/index-ro.html" />
+  <link rel="alternate" hreflang="tk" href="https://www.internationals.site/index-tk.html" />
   <link rel="alternate" hreflang="ky" href="https://www.internationals.site/index-ky.html" />
   <link rel="alternate" hreflang="x-default" href="https://www.internationals.site/" />
   <meta name="description" content="Professional translation services for documents, notarization, apostille, websites, and video. Fast and accurate translations for seafarers, travelers, and international clients worldwide.">
@@ -122,7 +127,7 @@
       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105858281', 'ym');
-    ym(105858281, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    ym(105858281, 'init', {ssr:true, webvisor:false, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
     // Google Analytics removed
   }
 
@@ -184,6 +189,11 @@
     <div class="language-option" data-lang="tr">TR<span>Türkçe</span></div>
     <div class="language-option" data-lang="uz">UZ<span>Oʻzbekcha</span></div>
     <div class="language-option" data-lang="vi">VI<span>Tiếng Việt</span></div>
+    <div class="language-option" data-lang="uk">UK<span>Українська</span></div>
+    <div class="language-option" data-lang="be">BE<span>Беларуская</span></div>
+    <div class="language-option" data-lang="lt">LT<span>Lietuvių</span></div>
+    <div class="language-option" data-lang="ro">RO<span>Română</span></div>
+    <div class="language-option" data-lang="tk">TK<span>Türkmençe</span></div>
   </div>
 
   <header class="header" id="header">
@@ -406,7 +416,8 @@
   <section id="contact" class="contact">
     <div class="contact-overlay" id="contactOverlay">
       <div class="cookie-banner-contact">
-        <p data-translate="cookie_text">If you accidentally landed on this site — do not accept analytics cookies.</p>
+        <p data-translate="cookie_text">We use cookies and Yandex Metrica so the site works and we can see how it is used. By clicking “Accept” you agree to this. Details are in the Privacy Policy.</p>
+        <p style="margin:0 0 10px"><a href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy" class="cookie-policy-link">Privacy Policy</a></p>
         <div style="display:flex;gap:10px;justify-content:center;margin-top:10px;">
           <button class="cookie-accept" id="acceptCookies" data-translate="cookie_accept">Accept</button>
           <button class="cookie-accept" id="declineCookies" data-translate="cookie_decline" style="background:#6b7280;">Decline</button>
@@ -467,6 +478,7 @@
             <div class="form-group"><input type="text" id="subject" data-translate-placeholder="form_subject" placeholder="Subject" required></div>
             <div class="form-group"><textarea id="message" data-translate-placeholder="form_message" placeholder="Your message" rows="5" required></textarea></div>
             <div class="form-group"><input type="file" id="attachment" multiple></div>
+            <div class="form-group consent-group"><label style="display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.4;cursor:pointer;text-align:left"><input type="checkbox" id="consent" required style="margin-top:3px;width:auto;flex:none"><span><span data-translate="consent_pre">I agree to the processing of my personal data:</span> <a href="assets/consent_ru.html" target="privacy_tab" data-translate="consent_link">Consent</a> · <a href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">Privacy Policy</a></span></label></div>
             <button type="submit" class="btn btn-primary btn-full" data-translate="form_submit">Send message</button>
           </form>
         </div>
@@ -497,7 +509,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>©Internationals' 2026. Вы просматриваете региональное зеркало сайта. Все права защищены. &nbsp;|&nbsp; <a id="privacyLink" href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">Privacy Policy</a></p>
+      <p>©Internationals' 2026. Вы просматриваете региональное зеркало сайта. Все права защищены. &nbsp;|&nbsp; <a id="privacyLink" href="assets/privacy_policy_ru.html" target="privacy_tab" data-translate="footer_privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="assets/consent_ru.html" target="privacy_tab" data-translate="consent_link">Consent</a></p>
     </div>
   </footer>
 
@@ -600,7 +612,7 @@
       }
     });
 
-    const supportedLangs = ['en','ru','de','es','pt','zh','ar','fr','kk','uz','tg','az','ja','ko','hi','tr','it','id','ms','vi','pl','nl','cs','sv','fa','fi','ne','bg','sr','hy','ka','et','lv','mn','ky'];
+    const supportedLangs = ['en','ru','de','es','pt','zh','ar','fr','kk','uz','tg','az','ja','ko','hi','tr','it','id','ms','vi','pl','nl','cs','sv','fa','fi','ne','bg','sr','hy','ka','et','lv','mn','ky','uk','be','lt','ro','tk'];
     let userLang = navigator.language || navigator.userLanguage;
     userLang = userLang.split('-')[0];
     let currentLang = localStorage.getItem('language') || (supportedLangs.includes(userLang) ? userLang : 'en');
@@ -621,8 +633,10 @@
       document.querySelectorAll('.language-option').forEach(opt => {
         opt.classList.toggle('active', opt.dataset.lang === lang);
       });
-      var __privacyLangs = ['ar','de','en','es','pt','ru','zh'];
+      var __privacyLangs = ['ar','az','bg','cs','de','en','es','et','hy','ka','kk','ko','ky','lv','mn','pl','pt','ru','sr','tg','uz','vi','zh','uk','be','lt','ro','tk'];
       document.getElementById('privacyLink').href = 'assets/privacy_policy_' + (__privacyLangs.includes(lang) ? lang : 'en') + '.html';
+      document.querySelectorAll('a[href="assets/privacy_policy_ru.html"]').forEach(function(a){ a.href = 'assets/privacy_policy_' + (__privacyLangs.includes(lang) ? lang : 'en') + '.html'; });
+      document.querySelectorAll('a[href="assets/consent_ru.html"]').forEach(function(a){ a.href = 'assets/consent_' + (__privacyLangs.includes(lang) ? lang : 'en') + '.html'; });
       dropdown.classList.remove('show');
     }
 
